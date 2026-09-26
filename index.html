@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Léana & Kéran — 14 Novembre 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="flowers.css" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a2647;
+    --navy-light: #12395e;
+    --navy-lighter: #1b4a75;
+    --gold: #d4af6a;
+    --cream: #f4ecd8;
+    --cream-soft: #e7dcc0;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: 70px; scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 50%, var(--navy) 100%);
+    color: var(--cream);
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 50;
+    background: rgba(10, 38, 71, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(212,175,106,0.35);
+    padding: 3mm 4mm;
+    display: flex;
+    justify-content: center;
+    gap: 4mm;
+    flex-wrap: wrap;
+    font-size: 10.5pt;
+    letter-spacing: 0.5pt;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--cream-soft);
+    padding: 1.5mm 2mm;
+    text-transform: uppercase;
+    font-size: 10.5pt;
+    letter-spacing: 1pt;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--gold); }
+
+  section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 14mm 6mm;
+    text-align: center;
+  }
+
+  .frame-deco {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 4mm auto;
+    opacity: 0.85;
+  }
+
+  /* HERO */
+  .hero { padding-top: 18mm; }
+  .families {
+    font-size: 13pt;
+    letter-spacing: 1.6pt;
+    color: var(--gold);
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+  .invite-text {
+    margin-top: 5mm;
+    font-size: 13.5pt;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .names {
+    margin-top: 7mm;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(32px, 8vw, 52px);
+    color: #f7e7c1;
+    line-height: 1.25;
+  }
+  .amp { font-size: 0.55em; color: var(--gold); display: block; margin: 1mm 0; }
+  .verse {
+    max-width: 480px;
+    margin: 7mm auto 0 auto;
+    font-size: 15pt;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--cream-soft);
+  }
+  .verse-ref {
+    display: block;
+    margin-top: 2mm;
+    font-size: 11.5pt;
+    letter-spacing: 1pt;
+    color: var(--gold);
+    font-style: normal;
+  }
+  .date-badge {
+    display: inline-block;
+    margin-top: 8mm;
+    padding: 3mm 8mm;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    font-size: 13pt;
+    letter-spacing: 1pt;
+    color: var(--gold);
+  }
+
+  h2.section-title {
+    font-size: 20pt;
+    color: var(--gold);
+    letter-spacing: 1pt;
+    margin-bottom: 2mm;
+  }
+  .section-sub {
+    font-size: 12.5pt;
+    color: var(--cream-soft);
+    font-style: italic;
+    margin-bottom: 8mm;
+  }
+
+  /* PROGRAMME */
+  .prog-block {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,175,106,0.3);
+    border-radius: 6px;
+    padding: 6mm 6mm;
+    margin-bottom: 5mm;
+    text-align: left;
+  }
+  .prog-time {
+    font-size: 15pt;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .prog-title {
+    font-size: 13pt;
+    font-weight: 600;
+    color: var(--cream);
+    margin-top: 1mm;
+  }
+  .prog-place {
+    font-size: 12pt;
+    color: var(--cream-soft);
+    margin-top: 1mm;
+  }
+  .order-list {
+    text-align: left;
+    max-width: 480px;
+    margin: 6mm auto 0 auto;
+    border-top: 1px solid rgba(212,175,106,0.25);
+    padding-top: 5mm;
+  }
+  .order-list .note {
+    font-size: 11pt;
+    color: var(--cream-soft);
+    opacity: 0.7;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 4mm;
+  }
+  .order-item {
+    display: flex;
+    gap: 3mm;
+    padding: 2mm 0;
+    font-size: 12pt;
+    border-bottom: 1px dashed rgba(231,220,192,0.15);
+  }
+  .order-item .num { color: var(--gold); min-width: 6mm; }
+
+  /* LOCALISATION */
+  .place-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,175,106,0.3);
+    border-radius: 6px;
+    padding: 6mm;
+    margin-bottom: 5mm;
+    text-align: left;
+  }
+  .place-name { font-size: 14pt; font-weight: 600; color: var(--cream); }
+  .place-address { font-size: 12pt; color: var(--cream-soft); margin-top: 1mm; }
+  .maps-link {
+    display: inline-block;
+    margin-top: 3mm;
+    font-size: 11.5pt;
+    letter-spacing: 0.5pt;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 0.5mm;
+  }
+
+  /* CHANTS */
+  .chants-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4mm;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .chant-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,175,106,0.35);
+    border-radius: 6px;
+    padding: 4mm 5mm;
+    text-decoration: none;
+    color: var(--cream);
+    font-size: 13pt;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .chant-btn:hover { background: rgba(212,175,106,0.08); border-color: var(--gold); }
+  .chant-btn .icon { font-size: 14pt; margin-right: 3mm; }
+  .chant-btn .status {
+    font-size: 10pt;
+    color: var(--cream-soft);
+    opacity: 0.6;
+    font-style: italic;
+  }
+
+  /* CAGNOTTE */
+  .cagnotte-box {
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 8mm 6mm;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    background: rgba(212,175,106,0.05);
+  }
+  .cagnotte-msg {
+    font-size: 15pt;
+    font-style: italic;
+    color: #f7e7c1;
+    line-height: 1.5;
+  }
+  .cagnotte-sub {
+    font-size: 12.5pt;
+    color: var(--cream-soft);
+    margin-top: 3mm;
+  }
+  .cagnotte-btn {
+    display: inline-block;
+    margin-top: 5mm;
+    padding: 3mm 9mm;
+    background: var(--gold);
+    color: var(--navy);
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 11pt;
+    font-weight: 600;
+    letter-spacing: 0.5pt;
+  }
+
+  /* RSVP FORM */
+  form {
+    max-width: 460px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .field { margin-bottom: 5mm; }
+  label {
+    display: block;
+    font-size: 11pt;
+    letter-spacing: 1pt;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5mm;
+  }
+  input[type="text"], input[type="number"], textarea {
+    width: 100%;
+    padding: 3mm 3.5mm;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,175,106,0.4);
+    border-radius: 4px;
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12.5pt;
+  }
+  input::placeholder, textarea::placeholder { color: rgba(244,236,216,0.35); }
+  input:focus, textarea:focus { outline: none; border-color: var(--gold); }
+  textarea { resize: vertical; min-height: 22mm; }
+
+  .checkbox-row {
+    display: flex;
+    gap: 6mm;
+    flex-wrap: wrap;
+  }
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    font-size: 13pt;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,175,106,0.3);
+    border-radius: 4px;
+    padding: 3mm 4mm;
+    cursor: pointer;
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
+  }
+  .checkbox-item input { width: auto; accent-color: var(--gold); }
+  .checkbox-item.checked { border-color: var(--gold); background: rgba(212,175,106,0.1); }
+
+  .submit-btn {
+    width: 100%;
+    padding: 4mm;
+    margin-top: 3mm;
+    background: linear-gradient(90deg, #d4af6a, #f0d999);
+    color: var(--navy);
+    border: none;
+    border-radius: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13.5pt;
+    font-weight: 600;
+    letter-spacing: 0.5pt;
+    cursor: pointer;
+  }
+  .submit-btn:active { transform: scale(0.98); }
+  .form-note {
+    font-size: 10.5pt;
+    color: var(--cream-soft);
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 4mm;
+    font-style: italic;
+  }
+
+  .confirmation {
+    display: none;
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 8mm;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    background: rgba(212,175,106,0.08);
+    text-align: center;
+  }
+  .confirmation.show { display: block; }
+  .confirmation .big { font-size: 17pt; color: #f7e7c1; margin-bottom: 2mm; }
+
+  footer {
+    text-align: center;
+    padding: 10mm 6mm calc(14mm + env(safe-area-inset-bottom, 0px)) 6mm;
+    font-size: 11.5pt;
+    color: var(--cream-soft);
+    border-top: 1px solid rgba(212,175,106,0.2);
+  }
+  footer .contact { color: var(--gold); margin-top: 2mm; letter-spacing: 0.5pt; }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 10mm auto;
+  }
+
+  @media (max-width: 480px) {
+    nav { gap: 2mm; padding: 2.5mm 2mm; }
+    nav a { font-size: 9.5pt; padding: 1mm 1.5mm; }
+    section { padding: 10mm 5mm; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#accueil">Accueil</a>
+  <a href="#programme">Programme</a>
+  <a href="#localisation">Localisation</a>
+  <a href="#chants">Chants</a>
+  <a href="#cagnotte">Un mot</a>
+  <a href="#rsvp">RSVP</a>
+</nav>
+
+<section class="hero" id="accueil">
+  <div class="families">
+    Les familles<br>Godran · Itany · Jorie · Bitam
+  </div>
+  <div class="invite-text">ont la joie de vous inviter au mariage de</div>
+  <div class="names">
+    Léana Godran
+    <span class="amp">&amp;</span>
+    Kéran Jorie Bitam
+  </div>
+  <div class="verse">
+    « Deux valent mieux qu'un... Car s'ils tombent, l'un relève son compagnon... Et la corde à trois fils ne se rompt pas facilement. »
+    <span class="verse-ref">ECCLÉSIASTE 4:9-12</span>
+  </div>
+  <div class="date-badge">Samedi 14 Novembre 2026</div>
+</section>
+
+<div class="divider"></div>
+
+<section id="programme">
+  <h2 class="section-title">Programme</h2>
+  <div class="section-sub">Le déroulé de notre journée</div>
+
+  <div class="prog-block">
+    <div class="prog-time">10h00</div>
+    <div class="prog-title">Cérémonie civile</div>
+    <div class="prog-place">Mairie de Morne-à-l'Eau</div>
+  </div>
+
+  <div class="prog-block">
+    <div class="prog-time">15h00</div>
+    <div class="prog-title">Cérémonie religieuse</div>
+    <div class="prog-place">Église Évangélique de la Guadeloupe (EEG)<br>Les Abymes — derrière le stade</div>
+  </div>
+
+  <div class="prog-block">
+    <div class="prog-time">À l'issue du culte</div>
+    <div class="prog-title">Vin d'honneur</div>
+  </div>
+
+  <div class="order-list">
+    <div class="note">Déroulé indicatif du culte — dites-moi si vous voulez l'ajuster</div>
+    <div class="order-item"><span class="num">1</span> Accueil et entrée des mariés</div>
+    <div class="order-item"><span class="num">2</span> Chant d'ouverture</div>
+    <div class="order-item"><span class="num">3</span> Lecture de la Parole</div>
+    <div class="order-item"><span class="num">4</span> Prédication</div>
+    <div class="order-item"><span class="num">5</span> Échange des consentements et des alliances</div>
+    <div class="order-item"><span class="num">6</span> Prière de bénédiction</div>
+    <div class="order-item"><span class="num">7</span> Chant de sortie</div>
+  </div>
+
+  <div class="verse" style="margin-top:8mm;">
+    « Ce que Dieu a uni, que l'homme ne le sépare point. »
+    <span class="verse-ref">MATTHIEU 19:6</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="localisation">
+  <h2 class="section-title">Localisation</h2>
+  <div class="section-sub">Comment nous rejoindre</div>
+
+  <div class="place-card">
+    <div class="place-name">📍 Mairie de Morne-à-l'Eau</div>
+    <div class="place-address">10h00 — Cérémonie civile</div>
+    <a class="maps-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Mairie+de+Morne-a-l%27Eau+Guadeloupe">Voir sur Google Maps →</a>
+  </div>
+
+  <div class="place-card">
+    <div class="place-name">📍 Église Évangélique de la Guadeloupe (EEG)</div>
+    <div class="place-address">15h00 — Cérémonie religieuse<br>Les Abymes, derrière le stade</div>
+    <a class="maps-link" target="_blank" rel="noopener" href="https://maps.app.goo.gl/oVJqd94GA8SMzSap7">Voir sur Google Maps →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="chants">
+  <h2 class="section-title">Chants</h2>
+  <div class="section-sub">Retrouvez les partitions / paroles des chants du culte</div>
+
+  <div class="chants-grid">
+    <a class="chant-btn" href="#" onclick="return chantClick(1)">
+      <span><span class="icon">🎵</span>Chant 1</span>
+      <span class="status">PDF à venir</span>
+    </a>
+    <a class="chant-btn" href="#" onclick="return chantClick(2)">
+      <span><span class="icon">🎵</span>Chant 2</span>
+      <span class="status">PDF à venir</span>
+    </a>
+    <a class="chant-btn" href="#" onclick="return chantClick(3)">
+      <span><span class="icon">🎵</span>Chant 3</span>
+      <span class="status">PDF à venir</span>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="cagnotte">
+  <h2 class="section-title">Un mot</h2>
+  <div class="cagnotte-box">
+    <div class="cagnotte-msg">« Pensez à nous... »</div>
+    <div class="cagnotte-sub">Votre présence est le plus beau des cadeaux. Vos bénédictions et dons, sous quelque forme que ce soit, y compris monétaires, seront reçus avec beaucoup de gratitude.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-sub">Livre d'or — laissez un mot aux mariés</div>
+  <form id="guestbookForm" style="max-width:460px; margin:0 auto; text-align:left;">
+    <div class="field">
+      <label for="gbNom">Votre nom</label>
+      <input type="text" id="gbNom" placeholder="Votre nom et prénom" required>
+    </div>
+    <div class="field">
+      <label for="gbMessage">Votre message</label>
+      <textarea id="gbMessage" placeholder="Un mot doux, un souvenir, une bénédiction..." required></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Envoyer mon message</button>
+    <div class="form-note">Votre message est envoyé automatiquement — vous n'avez rien d'autre à faire.</div>
+  </form>
+
+  <div class="confirmation" id="gbConfirmationBox">
+    <div class="big">Merci pour ce mot 💛</div>
+    <div>Votre message a bien été envoyé aux mariés.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="rsvp">
+  <h2 class="section-title">RSVP</h2>
+  <div class="section-sub">Merci de confirmer votre présence avant le 31 Octobre 2026</div>
+
+  <form id="rsvpForm">
+    <div class="field">
+      <label for="nom">Nom complet</label>
+      <input type="text" id="nom" placeholder="Votre nom et prénom" required>
+    </div>
+
+    <div class="field">
+      <label>Je serai présent(e) à :</label>
+      <div class="checkbox-row">
+        <label class="checkbox-item" id="mairieLabel">
+          <input type="checkbox" id="mairie"> Mairie (10h)
+        </label>
+        <label class="checkbox-item" id="egliseLabel">
+          <input type="checkbox" id="eglise"> Église (15h)
+        </label>
+      </div>
+    </div>
+
+    <div class="field" id="dejeunerField" style="display:none;">
+      <label class="checkbox-item" id="dejeunerLabel" style="display:flex; width:100%;">
+        <input type="checkbox" id="dejeuner"> Déjeuner
+      </label>
+      <div class="form-note" style="text-align:left; margin-top:2mm;">Cette case concerne uniquement les invités conviés au déjeuner. Merci de la laisser décochée si ce n'est pas votre cas — cela nous aide à gérer les quantités.</div>
+    </div>
+
+    <div class="field">
+      <label for="nbPersonnes">Nombre de personnes (vous inclus(e))</label>
+      <input type="number" id="nbPersonnes" min="1" value="1" required>
+    </div>
+
+    <div class="field">
+      <label for="accompagnants">Noms des accompagnants (facultatif)</label>
+      <input type="text" id="accompagnants" placeholder="Ex : Marie D., Paul D.">
+    </div>
+
+    <div class="field">
+      <label for="allergies">Allergies / régime alimentaire</label>
+      <input type="text" id="allergies" placeholder="Ex : végétarien, sans gluten...">
+    </div>
+
+    <div class="field">
+      <label for="message">Un petit mot pour les mariés (facultatif)</label>
+      <textarea id="message" placeholder="Votre message..."></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Envoyer ma confirmation</button>
+    <div class="form-note">Votre confirmation est envoyée automatiquement — vous n'avez rien d'autre à faire.</div>
+  </form>
+
+  <div class="confirmation" id="confirmationBox">
+    <div class="big">Merci ! 💛</div>
+    <div>Votre confirmation a bien été envoyée aux mariés.</div>
+  </div>
+</section>
+
+<footer>
+  <div>Pour toute question, n'hésitez pas à nous contacter</div>
+  <div class="contact">Prisca — 06 90 50 48 87<br>Léana — 06 90 40 15 96</div>
+</footer>
+
+<script>
+  // ==================================================================
+  // Google Sheet : collez ici le lien /exec obtenu après déploiement
+  // de l'Apps Script (voir google-apps-script.gs). Tant que ce champ
+  // contient "COLLEZ_VOTRE_LIEN_ICI", l'envoi vers le Sheet est ignoré
+  // silencieusement (seul l'email FormSubmit continue de fonctionner).
+  // ==================================================================
+  var SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyrrbWDvgBzK4z7uRiLuma0GKPsyaserFpJLMXisYNv8aq647f2I1Uj6Gtm2tyA7dwd/exec';
+
+  function logToSheet(data) {
+    if (!SHEET_WEBAPP_URL || SHEET_WEBAPP_URL.indexOf('COLLEZ_VOTRE_LIEN_ICI') !== -1) return;
+    try {
+      fetch(SHEET_WEBAPP_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Apps Script ne renvoie pas d'en-têtes CORS ; on envoie "à l'aveugle"
+        headers: { 'Content-Type': 'text/plain' }, // évite un preflight CORS bloquant
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      // silencieux : le Sheet est secondaire, l'email reste la source fiable
+    }
+  }
+
+  // Checkbox visual state
+  // Affiche la case Déjeuner uniquement si le lien contient ?dejeuner=1
+  var params = new URLSearchParams(window.location.search);
+  var showDejeuner = params.get('dejeuner') === '1';
+  if (showDejeuner) {
+    document.getElementById('dejeunerField').style.display = 'block';
+  }
+
+  ['mairie','eglise'].forEach(function(id){
+    var cb = document.getElementById(id);
+    var label = document.getElementById(id + 'Label');
+    cb.addEventListener('change', function(){
+      label.classList.toggle('checked', cb.checked);
+    });
+  });
+  if (showDejeuner) {
+    var dcb = document.getElementById('dejeuner');
+    var dlabel = document.getElementById('dejeunerLabel');
+    dcb.addEventListener('change', function(){
+      dlabel.classList.toggle('checked', dcb.checked);
+    });
+  }
+
+  function chantClick(n) {
+    alert('Le PDF du chant ' + n + ' sera bientôt disponible ici.');
+    return false;
+  }
+
+  document.getElementById('rsvpForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var nom = document.getElementById('nom').value.trim();
+    var mairie = document.getElementById('mairie').checked;
+    var eglise = document.getElementById('eglise').checked;
+    var dejeuner = showDejeuner ? document.getElementById('dejeuner').checked : null;
+    var nb = document.getElementById('nbPersonnes').value;
+    var accompagnants = document.getElementById('accompagnants').value.trim();
+    var allergies = document.getElementById('allergies').value.trim();
+    var message = document.getElementById('message').value.trim();
+
+    if (!nom) { alert('Merci d\'indiquer votre nom.'); return; }
+    if (!mairie && !eglise) { alert('Merci de sélectionner au moins une cérémonie (Mairie et/ou Église).'); return; }
+
+    var presences = [];
+    if (mairie) presences.push('Mairie (10h)');
+    if (eglise) presences.push('Église (15h)');
+
+    var payload = {
+      _subject: 'RSVP Mariage — ' + nom,
+      _template: 'table',
+      _captcha: 'false',
+      'Nom': nom,
+      'Présent(e) à': presences.join(' et '),
+      'Nombre de personnes': nb,
+      'Accompagnants': accompagnants || '—',
+      'Allergies / régime': allergies || '—',
+      'Message': message || '—'
+    };
+    if (dejeuner !== null) payload['Déjeuner'] = dejeuner ? 'Oui' : 'Non';
+
+    logToSheet({
+      type: 'RSVP',
+      nom: nom,
+      presence: presences.join(' et '),
+      dejeuner: dejeuner === null ? '' : (dejeuner ? 'Oui' : 'Non'),
+      nombre: nb,
+      accompagnants: accompagnants,
+      allergies: allergies,
+      message: message
+    });
+
+    var submitBtn = document.querySelector('#rsvpForm .submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+
+    fetch('https://formsubmit.co/ajax/mrsandmrjomiebitor@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(){
+      document.getElementById('rsvpForm').style.display = 'none';
+      document.getElementById('confirmationBox').classList.add('show');
+      try { localStorage.setItem('rsvp_sent_leana_keran', '1'); } catch(err) {}
+    })
+    .catch(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer ma confirmation';
+      alert('Une erreur est survenue. Merci de réessayer, ou de nous contacter directement au 06 90 50 48 87 (Prisca) ou 06 90 40 15 96 (Léana).');
+    });
+
+    try { localStorage.setItem('rsvp_sent_leana_keran', '1'); } catch(err) {}
+  });
+
+  // Optional: if already sent on this device, show a gentle notice (not blocking re-send)
+  try {
+    if (localStorage.getItem('rsvp_sent_leana_keran') === '1') {
+      var note = document.createElement('div');
+      note.className = 'form-note';
+      note.style.marginBottom = '4mm';
+      note.textContent = 'Il semble que vous ayez déjà confirmé depuis cet appareil — vous pouvez renvoyer si besoin.';
+      document.getElementById('rsvpForm').prepend(note);
+    }
+  } catch(err) {}
+  document.getElementById('guestbookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var nom = document.getElementById('gbNom').value.trim();
+    var message = document.getElementById('gbMessage').value.trim();
+
+    if (!nom || !message) { alert('Merci de renseigner votre nom et votre message.'); return; }
+
+    logToSheet({
+      type: "Livre d'or",
+      nom: nom,
+      message: message
+    });
+
+    var submitBtn = document.querySelector('#guestbookForm .submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+
+    fetch('https://formsubmit.co/ajax/mrsandmrjomiebitor@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Livre d\'or — mot de ' + nom,
+        _template: 'table',
+        _captcha: 'false',
+        'De la part de': nom,
+        'Message': message
+      })
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(){
+      document.getElementById('guestbookForm').style.display = 'none';
+      document.getElementById('gbConfirmationBox').classList.add('show');
+    })
+    .catch(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer mon message';
+      alert('Une erreur est survenue. Merci de réessayer, ou de nous contacter directement au 06 90 50 48 87 (Prisca) ou 06 90 40 15 96 (Léana).');
+    });
+  });
+</script>
+
+<script src="flowers.js"></script>
+
+</body>
+</html>

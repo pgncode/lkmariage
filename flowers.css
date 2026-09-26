@@ -1,0 +1,58 @@
+/* ===================================================
+   Décorations florales — bandes latérales
+   Ce fichier est volontairement séparé de l'habillage
+   principal pour pouvoir être ajusté sans toucher au
+   reste du site (couleurs, formulaire, etc.)
+   =================================================== */
+
+/* Nécessaire pour que les bandes florales (position: absolute)
+   s'étendent sur toute la hauteur réelle de la page, quelle
+   que soit sa longueur (et pas seulement un écran) */
+body {
+  position: relative;
+}
+
+.floral-side {
+  position: absolute; /* suit le contenu sur toute la longueur de la page */
+  top: 0;
+  bottom: 0;
+  width: clamp(70px, 9vw, 170px);
+  pointer-events: none; /* ne bloque jamais les clics sur le contenu */
+  z-index: 1;           /* au-dessus du fond, sous le contenu */
+  opacity: 0.95;
+
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: 100% auto; /* largeur = largeur de la bande, hauteur proportionnelle */
+}
+
+.floral-left  { left: 0; }
+.floral-right { right: 0; }
+
+/* Si une seule image est fournie et utilisée des deux côtés,
+   on la retourne en miroir côté droit */
+.floral-mirror {
+  transform: scaleX(-1);
+}
+
+/* Le contenu principal du site doit rester lisible :
+   on s'assure qu'il passe au-dessus des décorations */
+nav, section, footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* On masque les bandes latérales sur petit écran pour ne pas
+   empiéter sur le contenu (le site est déjà centré et étroit) */
+@media (max-width: 899px) {
+  .floral-side {
+    display: none;
+  }
+}
+
+/* Sur écran très large, on peut élargir légèrement la bande */
+@media (min-width: 1400px) {
+  .floral-side {
+    width: clamp(120px, 11vw, 220px);
+  }
+}
