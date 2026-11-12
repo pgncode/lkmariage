@@ -436,7 +436,6 @@
   <a href="#parking">Parking</a>
   <a href="#chants">Chants</a>
   <a href="#cagnotte">Un mot</a>
-  <a href="#rsvp">RSVP</a>
 </nav>
 
 <section class="hero" id="accueil">
@@ -588,59 +587,6 @@
   </div>
 </section>
 
-<div class="divider"></div>
-
-<section id="rsvp">
-  <h2 class="section-title">RSVP</h2>
-  <div class="section-sub">Merci de confirmer votre présence jusqu'au 04 Novembre 2026. NB : Même si vous n'avez pas confirmé, vous êtes les bienvenus.</div>
-
-  <form id="rsvpForm">
-    <div class="field">
-      <label for="nom">Nom complet</label>
-      <input type="text" id="nom" placeholder="Votre nom et prénom" required>
-    </div>
-
-    <div class="field">
-      <label>Je serai présent(e) à :</label>
-      <div class="checkbox-row">
-        <label class="checkbox-item" id="mairieLabel">
-          <input type="checkbox" id="mairie"> Mairie (10h)
-        </label>
-        <label class="checkbox-item" id="egliseLabel">
-          <input type="checkbox" id="eglise"> Église (15h)
-        </label>
-      </div>
-    </div>
-
-    <div class="field">
-      <label for="nbPersonnes">Nombre de personnes (vous inclus(e))</label>
-      <input type="number" id="nbPersonnes" min="1" value="1" required>
-    </div>
-
-    <div class="field">
-      <label for="accompagnants">Noms des accompagnants (facultatif)</label>
-      <input type="text" id="accompagnants" placeholder="Ex : Marie D., Paul D.">
-    </div>
-
-    <div class="field">
-      <label for="allergies">Allergies / régime alimentaire</label>
-      <input type="text" id="allergies" placeholder="Ex : végétarien, sans gluten...">
-    </div>
-
-    <div class="field">
-      <label for="message">Un petit mot pour les mariés (facultatif)</label>
-      <textarea id="message" placeholder="Votre message..."></textarea>
-    </div>
-
-    <button type="submit" class="submit-btn">Envoyer ma confirmation</button>
-    <div class="form-note">Votre confirmation est envoyée automatiquement — vous n'avez rien d'autre à faire.</div>
-  </form>
-
-  <div class="confirmation" id="confirmationBox">
-    <div class="big">Merci ! 💛</div>
-    <div>Votre confirmation a bien été envoyée aux mariés.</div>
-  </div>
-</section>
 
 <footer>
   <div>Pour toute question, n'hésitez pas à nous contacter</div>
@@ -698,83 +644,6 @@
     });
   }
 
-  // Checkbox visual state
-  ['mairie','eglise'].forEach(function(id){
-    var cb = document.getElementById(id);
-    var label = document.getElementById(id + 'Label');
-    cb.addEventListener('change', function(){
-      label.classList.toggle('checked', cb.checked);
-    });
-  });
-
-  document.getElementById('rsvpForm').addEventListener('submit', function(e){
-    e.preventDefault();
-
-    var nom = document.getElementById('nom').value.trim();
-    var mairie = document.getElementById('mairie').checked;
-    var eglise = document.getElementById('eglise').checked;
-    var nb = document.getElementById('nbPersonnes').value;
-    var accompagnants = document.getElementById('accompagnants').value.trim();
-    var allergies = document.getElementById('allergies').value.trim();
-    var message = document.getElementById('message').value.trim();
-
-    if (!nom) { alert('Merci d\'indiquer votre nom.'); return; }
-    if (!mairie && !eglise) { alert('Merci de sélectionner au moins une cérémonie (Mairie et/ou Église).'); return; }
-
-    var presences = [];
-    if (mairie) presences.push('Mairie (10h)');
-    if (eglise) presences.push('Église (15h)');
-
-    var payload = {
-      _subject: 'RSVP Mariage — ' + nom,
-      _template: 'table',
-      _captcha: 'false',
-      'Nom': nom,
-      'Présent(e) à': presences.join(' et '),
-      'Nombre de personnes': nb,
-      'Accompagnants': accompagnants || '—',
-      'Allergies / régime': allergies || '—',
-      'Message': message || '—'
-    };
-
-    var submitBtn = document.querySelector('#rsvpForm .submit-btn');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours...';
-
-    firstSuccess([
-      logToSheet({
-        type: 'RSVP',
-        nom: nom,
-        presence: presences.join(' et '),
-        nombre: nb,
-        accompagnants: accompagnants,
-        allergies: allergies,
-        message: message
-      }),
-      sendEmail(payload)
-    ]).then(function(ok){
-      if (ok) {
-        document.getElementById('rsvpForm').style.display = 'none';
-        document.getElementById('confirmationBox').classList.add('show');
-        try { localStorage.setItem('rsvp_sent_leana_keran', '1'); } catch(err) {}
-      } else {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Envoyer ma confirmation';
-        alert('Une erreur est survenue. Merci de réessayer, ou de nous contacter directement au 06 90 50 48 87 (Prisca) ou 06 90 40 15 96 (Léana).');
-      }
-    });
-  });
-
-  // Optional: if already sent on this device, show a gentle notice (not blocking re-send)
-  try {
-    if (localStorage.getItem('rsvp_sent_leana_keran') === '1') {
-      var note = document.createElement('div');
-      note.className = 'form-note';
-      note.style.marginBottom = '4mm';
-      note.textContent = 'Il semble que vous ayez déjà confirmé depuis cet appareil — vous pouvez renvoyer si besoin.';
-      document.getElementById('rsvpForm').prepend(note);
-    }
-  } catch(err) {}
   document.getElementById('guestbookForm').addEventListener('submit', function(e){
     e.preventDefault();
 
